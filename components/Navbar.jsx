@@ -12,7 +12,9 @@ const Navbar = () => {
   const {data: session} = useSession()
 
   return (
-    <div className='flex justify-end bg-green-600'>
+    <div>
+      {session && session?.user ? (
+        <div className='flex justify-end bg-green-600'>
         <Image  className='rounded-full'
                 src={session?.user.image}
                 height={50}
@@ -21,6 +23,8 @@ const Navbar = () => {
         />
         
         <button onClick={signOut}>sign out</button>
+    </div>
+      ) : (null)}
     </div>
   )
 }
